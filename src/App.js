@@ -32,17 +32,13 @@ function App() {
     }
 
 
-    if(wordSet.has(currentWord.toLowerCase())) {
+   
       setCurrentAttempt({attempt: currentAttempt.attempt+1, position: 0});
-    } else {
-      alert("Word not found");
-    }
+    
 
     if(currentWord === correctWord) {
       setGameOver({gameOver: true, guessedWord: true});
-    }
-
-    if(currentAttempt.attempt === 5) {
+    }else if(currentAttempt.attempt === 5) {
       setGameOver({gameOver: true, guessedWord: false});
     }
     
