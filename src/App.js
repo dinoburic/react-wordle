@@ -10,7 +10,7 @@ export const AppContext = createContext();  //koristimo ContextAPI kako bismo vr
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({attempt: 0, position: 0});
-  const [wordSet, setWordSet] = useState(new Set());
+  const [ setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [correctWord, setCorrectWord] = useState("");
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false});
@@ -21,7 +21,7 @@ function App() {
       setCorrectWord(words.todaysWord);
     }
     getWords();
-  },[]);
+  },[setWordSet,setCorrectWord]);
 
   const handleEnter = () => {
     if(currentAttempt.position < 5) return;

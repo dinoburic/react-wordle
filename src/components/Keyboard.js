@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, {  useContext, useEffect } from 'react'
 import Key from './Key';
 import { AppContext } from '../App';
 
@@ -8,7 +8,9 @@ function Keyboard() {
   const keys3 = ["Y","X","C","V","B","N","M"]; 
   const {handleEnter, handleDelete, onSelectLetter, disabledLetters } = useContext(AppContext);
 
-  const handleKeyboard = useCallback((event)=> {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect( () => {
+  const handleKeyboard = (event)=> {
     if(event.key==="Enter")  {
       handleEnter();
     } else if(event.key === "Backspace") {
@@ -30,18 +32,19 @@ function Keyboard() {
         }
       })
     }
-  })
+  }
 
-  useEffect(()=> {
+  
     document.addEventListener("keydown",handleKeyboard);
 
     return () => {
       document.removeEventListener("keydown",handleKeyboard);
-    }
-  },[handleKeyboard])
+    } 
+    // eslint-disable-next-line
+  },[]) 
 
   return (
-    <div className='keyboard' onKeyDown={handleKeyboard}>
+    <div className='keyboard' >
       <div className='line1'>
         {keys1.map(slovo => {
           return <Key slovo={slovo} disabled={disabledLetters.includes(slovo)}/>

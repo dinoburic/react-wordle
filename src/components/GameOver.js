@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../App'
 
 export default function GameOver() {
-    const {gameOver, currentAttempt, setGameOver, correctWord} = useContext(AppContext);
+    const {gameOver, currentAttempt, correctWord} = useContext(AppContext);
   return (
     <div className='gameover'>
       <h3>{gameOver.guessedWord ? "You correctly guessed" : "You failed"}</h3>
